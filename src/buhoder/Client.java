@@ -17,10 +17,10 @@ import java.util.Objects;
  */
 public class Client
 {
-    private JFrame swg = new JFrame("Buhoder");
-    private javax.swing.JButton SendButton = new javax.swing.JButton("Send");
-    private TextArea write_message_area = new TextArea();
-    private TextArea chat_area = new TextArea();
+    private JFrame jFrame = new JFrame("Buhoder");
+    private javax.swing.JButton sendButton = new javax.swing.JButton("Send");
+    private TextArea writeMessageArea = new TextArea();
+    private TextArea chatArea = new TextArea();
     private BufferedReader in;
     private PrintWriter out;
     private boolean isWaiting = false;
@@ -33,22 +33,22 @@ public class Client
     public Client()
     {
 
-        SendButton.addActionListener(new ListenClass());
+        sendButton.addActionListener(new ListenClass());
 
-        chat_area.setEditable(false);
-        chat_area.setFocusable(false);
-        swg.setSize(560, 720);
-        swg.setMinimumSize(new Dimension(560, 720));
-        swg.setMaximumSize(new Dimension(560, 720));
-        swg.setResizable(false);
-        SendButton.setSize(80, (int) write_message_area.getSize().getHeight());
-        swg.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        swg.setLayout(new java.awt.BorderLayout());
+        chatArea.setEditable(false);
+        chatArea.setFocusable(false);
+        jFrame.setSize(560, 720);
+        jFrame.setMinimumSize(new Dimension(560, 720));
+        jFrame.setMaximumSize(new Dimension(560, 720));
+        jFrame.setResizable(false);
+        sendButton.setSize(80, (int) writeMessageArea.getSize().getHeight());
+        jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jFrame.setLayout(new java.awt.BorderLayout());
 
         JPanel South = new JPanel();
-        South.add(write_message_area);
-        South.add(SendButton);
-        write_message_area.addKeyListener(new KeyListener()
+        South.add(writeMessageArea);
+        South.add(sendButton);
+        writeMessageArea.addKeyListener(new KeyListener()
         {
             short iter = 0;
             @Override
@@ -61,7 +61,7 @@ public class Client
                     case 1: sendMessage(".."); break;
                     case 2: sendMessage("..."); break;
                 }
-                swg.setVisible(true);
+                jFrame.setVisible(true);
                 if (iter == 1000) iter = 0;
                 else ++iter;
             }
@@ -71,9 +71,9 @@ public class Client
             public void keyReleased(KeyEvent e) {}
         });
 
-        swg.add(chat_area, BorderLayout.CENTER);
-        swg.add(South, BorderLayout.SOUTH);
-        swg.setVisible(true);
+        jFrame.add(chatArea, BorderLayout.CENTER);
+        jFrame.add(South, BorderLayout.SOUTH);
+        jFrame.setVisible(true);
 
         connect();
     }
@@ -82,8 +82,10 @@ public class Client
     {
         public void actionPerformed(ActionEvent ae)
         {
-            if (ae.getSource() == SendButton)
+            if (ae.getSource() == sendButton)
+            {
                 sendMessage(null);
+            }
         }
     }
 
@@ -99,8 +101,8 @@ public class Client
                 isWaiting = true;
             }
         }
-        chat_area.append(msg);
-        swg.setVisible(true);
+        chatArea.append(msg);
+        jFrame.setVisible(true);
     }
 
     private void sendMessage(String message)
@@ -109,7 +111,7 @@ public class Client
         messageOut.msg = message;
         if (messageOut.msg == null)
         {
-            messageOut.msg = write_message_area.getText();
+            messageOut.msg = writeMessageArea.getText();
         }
         messageOut.convertToSend();
 
@@ -118,8 +120,8 @@ public class Client
             out.println(messageOut.msg);
         }
 
-        write_message_area.setText(null);
-        swg.setVisible(true);
+        writeMessageArea.setText(null);
+        jFrame.setVisible(true);
     }
 
     private void connect()
@@ -149,14 +151,14 @@ public class Client
         if (logs.msg != null)
         {
             logs.convertToGet();
-            chat_area.setText(logs.msg);
-            swg.setVisible(true);
+            chatArea.setText(logs.msg);
+            jFrame.setVisible(true);
         }
     }
 
     private void deleteWritingPoints()
     {
-        String text = chat_area.getText();
+        String text = chatArea.getText();
         String[] chat = text.split("\n");
         int iter = 0; text = "";
         for (String str : chat)
@@ -165,7 +167,7 @@ public class Client
                 text = text + chat[iter] + "\n";
             ++iter;
         }
-        chat_area.setText(text);
+        chatArea.setText(text);
     }
 
     private class GettingMessagesClass extends Thread

@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b5e4efe4-1dc5-484c-aeb8-8e9ac77f3f43" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client$Wait_to_delete_writingPoint$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client$Wait_to_delete_writingPoint.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client$getting_messages_class.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client$listen_class.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client$1.class" afterPath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client.class" afterPath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Client.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Server$Connection.class" afterPath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Server$Connection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Server.class" afterPath="$PROJECT_DIR$/out/production/Buhoder/buhoder/Server.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+    <list default="true" id="b5e4efe4-1dc5-484c-aeb8-8e9ac77f3f43" name="Default" comment="Fixed Client.java for last edition">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Server_logs.txt" afterPath="$PROJECT_DIR$/Server_logs.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/buhoder/Client.java" afterPath="$PROJECT_DIR$/src/buhoder/Client.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/buhoder/Message.java" afterPath="$PROJECT_DIR$/src/buhoder/Message.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/buhoder/Server.java" afterPath="$PROJECT_DIR$/src/buhoder/Server.java" />
     </list>
     <ignored path="Buhoder.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,10 +26,10 @@
     <splitter split-orientation="horizontal" split-proportion="0.37135416">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Server.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/buhoder/Server.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="191">
+                <state relative-caret-position="2006">
                   <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -53,10 +41,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Message.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Message.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/buhoder/Message.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1139">
+                <state relative-caret-position="1445">
                   <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -78,8 +66,8 @@
           <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/buhoder/Client.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1870">
-                  <caret line="120" column="41" selection-start-line="120" selection-start-column="41" selection-end-line="120" selection-end-column="41" />
+                <state relative-caret-position="-780">
+                  <caret line="153" column="39" selection-start-line="153" selection-start-column="39" selection-end-line="153" selection-end-column="39" />
                   <folding>
                     <element signature="e#779#780#0" expanded="true" />
                     <element signature="e#807#808#0" expanded="true" />
@@ -541,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1481980016349</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fixed Client.java for last edition">
+      <created>1481987607677</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1481987607677</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -613,7 +608,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed beautifully and created class 'Message', basically i don't know for what." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed beautifully and created class 'Message', basically i don't know for what." />
+    <MESSAGE value="Fixed Client.java for last edition" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Client.java for last edition" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -757,22 +753,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/buhoder/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Server#0" expanded="false" />
-            <element signature="e#255#256#0" expanded="true" />
-            <element signature="e#283#284#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/buhoder/Message.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1139">
+        <state relative-caret-position="1445">
           <caret line="85" column="5" selection-start-line="85" selection-start-column="5" selection-end-line="85" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -786,10 +769,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/buhoder/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2006">
+          <caret line="129" column="41" selection-start-line="129" selection-start-column="41" selection-end-line="129" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Server#0" expanded="false" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/buhoder/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1870">
-          <caret line="120" column="41" selection-start-line="120" selection-start-column="41" selection-end-line="120" selection-end-column="41" />
+        <state relative-caret-position="-780">
+          <caret line="153" column="39" selection-start-line="153" selection-start-column="39" selection-end-line="153" selection-end-column="39" />
           <folding>
             <element signature="e#779#780#0" expanded="true" />
             <element signature="e#807#808#0" expanded="true" />
