@@ -4,7 +4,6 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -63,7 +62,7 @@ public class Server
         }
         catch (Exception e)
         {
-            System.err.println("Потоки не были закрыты!");
+            System.err.println("Threads worn't closed!");
         }
     }
 
@@ -72,14 +71,12 @@ public class Server
         private BufferedReader in;
         private PrintWriter out;
         private Socket socket;
-        private int number;
 
         private String name = "";
 
         private Connection(Socket socket, int number)
         {
             this.socket = socket;
-            this.number = number;
             name = "Client" + number;
 
             try
@@ -159,7 +156,7 @@ public class Server
             }
             catch (Exception e)
             {
-                System.err.println("Потоки не были закрыты!");
+                System.err.println("Threads worn't closed!");
             }
         }
 

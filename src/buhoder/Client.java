@@ -105,9 +105,18 @@ public class Client
 
     private void sendMessage(String message)
     {
-        if (message == null) message = write_message_area.getText();
-        if (!Objects.equals(message, ""))
-            out.println(message.replace("\n", "////n"));
+        Message messageOut = new Message(null);
+        messageOut.msg = message;
+        if (messageOut.msg == null)
+        {
+            messageOut.msg = write_message_area.getText();
+        }
+        messageOut.convertToSend();
+
+        if (!Objects.equals(messageOut.msg, null))
+        {
+            out.println(messageOut.msg);
+        }
 
         write_message_area.setText(null);
         swg.setVisible(true);
@@ -135,10 +144,12 @@ public class Client
 
     private void refresh() throws IOException
     {
-        String logs = in.readLine();
-        if (logs!=null)
+        Message logs = new Message(null);
+        logs.msg = in.readLine();
+        if (logs.msg != null)
         {
-            chat_area.setText(logs.replace("////n", "\n"));
+            logs.convertToGet();
+            chat_area.setText(logs.msg);
             swg.setVisible(true);
         }
     }
@@ -168,11 +179,13 @@ public class Client
                 {
                     while (true)
                     {
-                        String messageIn = in.readLine();
-                        if (messageIn != null)
+                        Message messageIn = new Message(null);
+                        messageIn.msg = in.readLine();
+                        if (messageIn.msg != null)
                         {
-                            System.out.println("Got: " + messageIn.replace("////n", "\n"));
-                            addMessage(messageIn.replace("////n", "\n"));
+                            messageIn.convertToGet();
+                            System.out.println("Got: " + messageIn.msg);
+                            addMessage(messageIn.msg);
                         }
                     }
                 }

@@ -49,7 +49,7 @@ class Message
     {
         this.msg = getLogs();
         if (this.msg != null) this.convertToSend();
-        helloMessage = "[" + getTime() + "] " + senderName + " comes now////n";
+        helloMessage = "[" + getTime() + "] " + senderName + " comes now" + enter;
 
     }
 
