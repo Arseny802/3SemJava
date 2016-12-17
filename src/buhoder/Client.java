@@ -15,8 +15,8 @@ import java.util.Objects;
 /**
  * Created by Арсений on 12.12.2016.
  */
-public class Client {
-
+public class Client
+{
     private JFrame swg = new JFrame("Buhoder");
     private javax.swing.JButton SendButton = new javax.swing.JButton("Send");
     private TextArea write_message_area = new TextArea();
@@ -25,11 +25,15 @@ public class Client {
     private PrintWriter out;
     private boolean isWaiting = false;
 
-    public static void main(String[] args) {new Client();}
+    public static void main(String[] args)
+    {
+        new Client();
+    }
 
-    public Client() {
+    public Client()
+    {
 
-        SendButton.addActionListener( new listen_class());
+        SendButton.addActionListener(new ListenClass());
 
         chat_area.setEditable(false);
         chat_area.setFocusable(false);
@@ -44,15 +48,18 @@ public class Client {
         JPanel South = new JPanel();
         South.add(write_message_area);
         South.add(SendButton);
-        write_message_area.addKeyListener(new KeyListener() {
+        write_message_area.addKeyListener(new KeyListener()
+        {
             short iter = 0;
             @Override
-            public void keyTyped(KeyEvent e) {
-                if (e.getSource() == KeyCode.ENTER) send_message(null);
-                switch (iter % 3) {
-                    case 0: send_message("."); break;
-                    case 1: send_message(".."); break;
-                    case 2: send_message("..."); break;
+            public void keyTyped(KeyEvent e)
+            {
+                if (e.getSource() == KeyCode.ENTER) sendMessage(null);
+                switch (iter % 3)
+                {
+                    case 0: sendMessage("."); break;
+                    case 1: sendMessage(".."); break;
+                    case 2: sendMessage("..."); break;
                 }
                 swg.setVisible(true);
                 if (iter == 1000) iter = 0;
@@ -71,18 +78,23 @@ public class Client {
         connect();
     }
 
-    private class listen_class implements ActionListener {
-        public void actionPerformed(ActionEvent ae) {
+    private class ListenClass implements ActionListener
+    {
+        public void actionPerformed(ActionEvent ae)
+        {
             if (ae.getSource() == SendButton)
-                send_message(null);
+                sendMessage(null);
         }
     }
 
-    private void add_message(String msg) {
-        if (msg.startsWith("Client")) {
-            delete_writingPoints();
-            if(!isWaiting) {
-                Wait_to_delete_writingPoint Wait = new Wait_to_delete_writingPoint();
+    private void addMessage(String msg)
+    {
+        if (msg.startsWith("Client"))
+        {
+            deleteWritingPoints();
+            if(!isWaiting)
+            {
+                WaitToDeleteWritingPoint Wait = new WaitToDeleteWritingPoint();
                 Wait.start();
                 isWaiting = true;
             }
@@ -91,7 +103,8 @@ public class Client {
         swg.setVisible(true);
     }
 
-    private void send_message(String message) {
+    private void sendMessage(String message)
+    {
         if (message == null) message = write_message_area.getText();
         if (!Objects.equals(message, ""))
             out.println(message.replace("\n", "////n"));
@@ -100,35 +113,43 @@ public class Client {
         swg.setVisible(true);
     }
 
-    private void connect() {
-        try {
+    private void connect()
+    {
+        try
+        {
             InetAddress ipAddress = InetAddress.getByName("127.0.0.1");
             Socket socket = new Socket(ipAddress, 11675);
 
             in =  new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            Refresh();
-            getting_messages_class getting_messages = new getting_messages_class();
+            refresh();
+            GettingMessagesClass getting_messages = new GettingMessagesClass();
             getting_messages.start();
-        } catch (Exception x) {
+        }
+        catch (Exception x)
+        {
             x.printStackTrace();
         }
     }
 
-    private void Refresh() throws IOException {
+    private void refresh() throws IOException
+    {
         String logs = in.readLine();
-        if (logs!=null) {
+        if (logs!=null)
+        {
             chat_area.setText(logs.replace("////n", "\n"));
             swg.setVisible(true);
         }
     }
 
-    private void delete_writingPoints() {
+    private void deleteWritingPoints()
+    {
         String text = chat_area.getText();
         String[] chat = text.split("\n");
         int iter = 0; text = "";
-        for (String str : chat) {
+        for (String str : chat)
+        {
             if (!str.startsWith("Client"))
                 text = text + chat[iter] + "\n";
             ++iter;
@@ -136,19 +157,27 @@ public class Client {
         chat_area.setText(text);
     }
 
-    private class getting_messages_class extends Thread {
+    private class GettingMessagesClass extends Thread
+    {
         @Override
-        public void run() {
-            while (true) {
-                try {
-                    while (true) {
+        public void run()
+        {
+            while (true)
+            {
+                try
+                {
+                    while (true)
+                    {
                         String messageIn = in.readLine();
-                        if (messageIn != null) {
+                        if (messageIn != null)
+                        {
                             System.out.println("Got: " + messageIn.replace("////n", "\n"));
-                            add_message(messageIn.replace("////n", "\n"));
+                            addMessage(messageIn.replace("////n", "\n"));
                         }
                     }
-                } catch (IOException e) {
+                }
+                catch (IOException e)
+                {
                     System.err.println("Mistake with getting message.");
                     e.printStackTrace();
                 }
@@ -156,22 +185,28 @@ public class Client {
         }
     }
 
-    private class Wait_to_delete_writingPoint extends Thread{
-        synchronized public void run() {
-            try {
+    private class WaitToDeleteWritingPoint extends Thread
+    {
+        synchronized public void run()
+        {
+            try
+            {
                 wait(5000);
-                delete_writingPoints();
+                deleteWritingPoints();
                 isWaiting = false;
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
         }
-        public void main(String[] args) {
-            Runtime.getRuntime().addShutdownHook(new Thread() {
+        public void main(String[] args)
+        {
+            Runtime.getRuntime().addShutdownHook(new Thread()
+            {
                 public void run() {}
             });
-            new Wait_to_delete_writingPoint().start();
+            new WaitToDeleteWritingPoint().start();
         }
     }
 }
